@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.Eclipse" parent="Theme.Material3.Dark">
+        <item name="android:statusBarColor">#2a2831</item>
+    </style>
+</resources>
