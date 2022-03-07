@@ -15,7 +15,6 @@ import java.util.*
 
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -27,8 +26,7 @@ class SettingsFragment : Fragment() {
 
         val locale: Locale = resources.configuration.locales[0]
         val currentLanguage: String = if (locale.language.equals("ru")) ruLocale else enLocale
-        val languages = listOf(enLocale, ruLocale)
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_language, languages)
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_language, listOf(enLocale, ruLocale))
 
         val textView: AutoCompleteTextView? = (binding.languageMenuInput.editText as? AutoCompleteTextView)
         textView?.setText(currentLanguage, false)

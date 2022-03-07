@@ -3,16 +3,14 @@ package com.eclipse.bot.util
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkUtil {
     companion object {
         // Don't remove this function yet for creating requests to future API
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://host:port/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        //val retrofit: Retrofit = Retrofit.Builder()
+        //    .baseUrl("https://host:port/api/")
+        //    .addConverterFactory(GsonConverterFactory.create())
+        //    .build()
 
         fun isNetworkAvailable(context: Context?): Boolean {
             val connectivityManager: ConnectivityManager =

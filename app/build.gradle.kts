@@ -1,15 +1,15 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("kotlin-android")
 }
 
 android {
-    compileSdkVersion(32)
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "com.eclipse.bot"
-        minSdkVersion(26)
-        targetSdkVersion(32)
+        minSdk = 26
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -31,7 +31,7 @@ android {
         jvmTarget = "1.8"
     }
     packagingOptions {
-        excludes += "META-INF/DEPENDENCIES"
+        resources.excludes += "META-INF/DEPENDENCIES"
     }
     buildFeatures {
         viewBinding = true
