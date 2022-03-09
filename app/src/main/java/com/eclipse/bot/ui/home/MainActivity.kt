@@ -1,4 +1,4 @@
-package com.eclipse.bot.ui.main
+package com.eclipse.bot.ui.home
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "650912470101",
+    "project_id": "igneous-study-341611",
+    "storage_bucket": "igneous-study-341611.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650912470101:android:d4c1e6a1ddf566276cf0dc",
+        "android_client_info": {
+          "package_name": "com.eclipse.bot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650912470101-78ld2f480cjte6e57cl6lmbcaqqe4r2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWvDjVBsG0ellSj8ZuTPrfssCwWVMetbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650912470101-78ld2f480cjte6e57cl6lmbcaqqe4r2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

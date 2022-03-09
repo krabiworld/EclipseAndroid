@@ -9,7 +9,8 @@ class PreferencesHelper {
     companion object {
         private const val fileName: String = "preferencesApp"
 
-        fun getSharedPreferences(context: Context): SharedPreferences {
+        fun getSharedPreferences(context: Context?): SharedPreferences {
+			if (context == null) throw NullPointerException("Context is null.")
             val masterKey: MasterKey = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
             return EncryptedSharedPreferences.create(

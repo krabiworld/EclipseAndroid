@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Eclipse</string>
-    <string name="signInButton">Войти</string>
-    <string name="title_dashboard">Панель управления</string>
-    <string name="title_profile">Профиль</string>
-    <string name="title_settings">Настройки</string>
-    <string name="description_about">Активность об приложении</string>
-    <string name="option_signOut">Выйти</string>
-    <string name="option_about">Об приложении</string>
-    <string name="guild_manage">Настроить</string>
-    <string name="avatar_description">Аватар сервера</string>
-    <string name="networkUnavailable">Сеть недоступна</string>
-    <string name="refresh">Обновить</string>
-    <string name="checkInternet">Проверьте подключение к интернету</string>
-    <string name="saveButton">Сохранить</string>
-    <string name="saved">Сохранено</string>
-    <string name="app_description">Панель управления Eclipse</string>
-    <string name="lang">Язык</string>
-    <string name="russian_lang">Русский</string>
-    <string name="english_lang">Английский</string>
+  <string name="app_name">Eclipse</string>
+  <string name="signInButton">Войти</string>
+  <string name="title_dashboard">Панель управления</string>
+  <string name="title_profile">Профиль</string>
+  <string name="title_settings">Настройки</string>
+  <string name="description_about">Активность об приложении</string>
+  <string name="option_signOut">Выйти</string>
+  <string name="option_about">Об приложении</string>
+  <string name="guild_manage">Настроить</string>
+  <string name="avatar_description">Аватар сервера</string>
+  <string name="networkUnavailable">Сеть недоступна</string>
+  <string name="refresh">Обновить</string>
+  <string name="checkInternet">Проверьте подключение к интернету</string>
+  <string name="saveButton">Сохранить</string>
+  <string name="saved">Сохранено</string>
+  <string name="app_description">Панель управления Eclipse</string>
+  <string name="lang">Язык</string>
+  <string name="russian_lang">Русский</string>
+  <string name="english_lang">Английский</string>
+	<string name="dark_theme">Тёмная тема</string>
+  <string name="stop_please">Пожалуйста остановись!</string>
 </resources>

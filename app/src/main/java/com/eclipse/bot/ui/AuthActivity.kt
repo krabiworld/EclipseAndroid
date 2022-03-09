@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.eclipse.bot.data.local.PreferencesHelper
-import com.eclipse.bot.ui.main.MainActivity
+import com.eclipse.bot.ui.home.MainActivity
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

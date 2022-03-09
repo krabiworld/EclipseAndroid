@@ -1,6 +1,5 @@
-package com.eclipse.bot.ui.main
+package com.eclipse.bot.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.eclipse.bot.R
 import com.eclipse.bot.databinding.FragmentSettingsBinding
 import com.eclipse.bot.util.LanguageUtil
+import com.eclipse.bot.util.ThemeUtil
+import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.*
 
 class SettingsFragment : Fragment() {
@@ -35,9 +36,15 @@ class SettingsFragment : Fragment() {
         textView?.setOnItemClickListener { _, _, i, _ ->
             LanguageUtil.changeLanguage(context, resources, if (adapter.getItem(i)!! == ruLocale) "ru" else "en")
 
-            startActivity(Intent(context, MainActivity::class.java))
-            activity?.finish()
+            activity?.recreate()
         }
+
+		val darkThemeSwitch: SwitchMaterial = binding.darkThemeSwitch
+		darkThemeSwitch.isChecked = ThemeUtil.isDark(context)
+
+		darkThemeSwitch.setOnCheckedChangeListener { _, isChecked ->
+			ThemeUtil.changeTheme(context, isChecked)
+		}
 
         return root
     }
