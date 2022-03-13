@@ -30,7 +30,8 @@
 		</activity>
 		<activity android:name=".ui.AboutActivity" android:exported="true"/>
 		<activity android:name=".ui.home.MainActivity" android:exported="true"/>
-		<activity android:name=".ui.StartActivity" android:theme="@style/Theme.Splash" android:exported="true">
+		<activity android:name=".ui.settings.SettingsActivity" android:exported="true"/>
+		<activity android:name=".ui.StartActivity" android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.MAIN"/>
 

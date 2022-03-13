@@ -14,6 +14,7 @@ import com.eclipse.bot.data.local.PreferencesHelper
 import com.eclipse.bot.databinding.ActivityMainBinding
 import com.eclipse.bot.ui.AboutActivity
 import com.eclipse.bot.ui.StartActivity
+import com.eclipse.bot.ui.settings.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -28,11 +29,9 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_dashboard, R.id.navigation_profile, R.id.navigation_settings
-            )
-        )
+        val appBarConfiguration = AppBarConfiguration(setOf(
+			R.id.navigation_dashboard, R.id.navigation_profile
+		))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -45,13 +44,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.option_signOut -> {
-                val sharedPreferences = PreferencesHelper.getSharedPreferences(this)
-                sharedPreferences.edit().putBoolean("isAuthenticated", false).apply()
+				val preferences = PreferencesHelper.get(this)
+                val encryptedPreferences = PreferencesHelper.getEncrypted(this)
+				preferences.edit().putBoolean("isAuthenticated", false).apply()
+                encryptedPreferences.edit().putString("token", "").apply()
 
                 startActivity(Intent(this, StartActivity::class.java))
                 finish()
                 true
             }
+			R.id.option_settings -> {
+				startActivity(Intent(this, SettingsActivity::class.java))
+				true
+			}
             R.id.option_about -> {
                 startActivity(Intent(this, AboutActivity::class.java))
                 true

@@ -12,10 +12,13 @@ class AuthActivity : AppCompatActivity() {
 
         val accessToken: String = intent.data?.getQueryParameter("token")!!
 
-        val sharedPreferences = PreferencesHelper.getSharedPreferences(this)
-        sharedPreferences.edit()
+		val preferences = PreferencesHelper.get(this)
+        val encryptedPreferences = PreferencesHelper.getEncrypted(this)
+		preferences.edit()
+			.putBoolean("isAuthenticated", true)
+			.apply()
+        encryptedPreferences.edit()
             .putString("token", accessToken)
-            .putBoolean("isAuthenticated", true)
             .apply()
 
         startActivity(Intent(this, MainActivity::class.java))

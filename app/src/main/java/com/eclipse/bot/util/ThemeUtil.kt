@@ -3,26 +3,32 @@ package com.eclipse.bot.util
 import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
+import com.eclipse.bot.data.enum.Theme
 import com.eclipse.bot.data.local.PreferencesHelper
 
 class ThemeUtil {
 	companion object {
-		fun changeTheme(context: Context?, isDark: Boolean) {
-			val preferences = PreferencesHelper.getSharedPreferences(context!!)
-			if (isDark) {
-				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-				preferences.edit().putBoolean("isDark", true).apply()
-				return
+		fun changeTheme(theme: String) {
+			var mode: Int = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+			when (theme) {
+				"light" -> mode = AppCompatDelegate.MODE_NIGHT_NO
+				"dark" -> mode = AppCompatDelegate.MODE_NIGHT_YES
 			}
-			AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+			AppCompatDelegate.setDefaultNightMode(mode)
 		}
 
-		fun isDark(context: Context?): Boolean {
-			var isDark = false
-			when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
-				Configuration.UI_MODE_NIGHT_YES -> isDark = true
+		fun currentTheme(context: Context?): Theme {
+			var theme = Theme.DEFAULT
+
+			if (PreferencesHelper.get(context).getString("theme", "default") == "default") {
+				return theme
 			}
-			return isDark
+
+			when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+				Configuration.UI_MODE_NIGHT_YES -> theme = Theme.DARK
+				Configuration.UI_MODE_NIGHT_NO -> theme = Theme.LIGHT
+			}
+			return theme
 		}
 	}
 }

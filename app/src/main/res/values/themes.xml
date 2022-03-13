@@ -1,9 +1,5 @@
 <resources>
-  <style name="Theme.Eclipse" parent="Theme.Material3.DayNight">
-
-	</style>
-
-  <style name="Theme.Splash" parent="Theme.Material3.DayNight.NoActionBar">
-
+	<style name="Theme.Eclipse" parent="Theme.Material3.DayNight">
+		<item name="android:statusBarColor">@color/main</item>
 	</style>
 </resources>

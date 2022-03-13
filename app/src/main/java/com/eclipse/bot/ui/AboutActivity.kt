@@ -10,7 +10,7 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
-        supportActionBar?.title = resources.getString(R.string.option_about)
+        supportActionBar?.title = getString(R.string.option_about)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

@@ -7,15 +7,21 @@ import androidx.security.crypto.MasterKey
 
 class PreferencesHelper {
     companion object {
-        private const val fileName: String = "preferencesApp"
+		private const val fileName: String = "preferences"
+        private const val encryptedFileName: String = "encryptedPreferences"
 
-        fun getSharedPreferences(context: Context?): SharedPreferences {
+		fun get(context: Context?): SharedPreferences {
+			if (context == null) throw NullPointerException("Context is null.")
+			return context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+		}
+
+        fun getEncrypted(context: Context?): SharedPreferences {
 			if (context == null) throw NullPointerException("Context is null.")
             val masterKey: MasterKey = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
             return EncryptedSharedPreferences.create(
                 context,
-                fileName,
+                encryptedFileName,
                 masterKey,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM

@@ -25,7 +25,6 @@ import java.io.IOException
 class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
-
 	private val model: DashboardViewModel by viewModels()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -36,14 +35,15 @@ class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
 			dialog.show()
 		}
 
-		val token: String = PreferencesHelper.getSharedPreferences(context).getString("token", "")!!
+		val encryptedPreferences = PreferencesHelper.getEncrypted(context)
+		val token: String = encryptedPreferences.getString("token", "")!!
 
 		val guildsList: ListView = binding.guildsList
 		val guildsAdapter = GuildAdapter(context, R.layout.guild_card, ArrayList())
 		guildsList.adapter = guildsAdapter
 
 		if (model.getGuilds()!!.isEmpty()) {
-			setGuildListAsync(guildsAdapter, token)
+			updateGuildListAsync(guildsAdapter, token)
 		} else {
 			guildsAdapter.addAll(model.getGuilds()!!)
 			guildsAdapter.notifyDataSetChanged()
@@ -57,7 +57,7 @@ class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
 				return@setOnRefreshListener
 			}
 
-			setGuildListAsync(guildsAdapter, token)
+			updateGuildListAsync(guildsAdapter, token)
 
 			binding.swipeToRefresh.isRefreshing = false
 		}
@@ -70,7 +70,7 @@ class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
 		_binding = null
     }
 
-	private fun setGuildListAsync(guildsAdapter: GuildAdapter, token: String) {
+	private fun updateGuildListAsync(guildsAdapter: GuildAdapter, token: String) {
 		launch(Dispatchers.IO) {
 			val discordGuilds: List<Guild>
 

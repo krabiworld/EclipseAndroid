@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.eclipse.bot.R
 import com.eclipse.bot.data.local.PreferencesHelper
 import com.eclipse.bot.data.model.UserModel
 import com.eclipse.bot.databinding.FragmentProfileBinding
+import com.eclipse.bot.ui.home.model.ProfileViewModel
 import com.eclipse.bot.util.CircleTransform
 import com.eclipse.bot.util.DialogUtil
 import com.eclipse.bot.util.NetworkUtil
@@ -22,40 +25,36 @@ import java.io.IOException
 class ProfileFragment : Fragment(), CoroutineScope by MainScope() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
-    private var user: UserModel? = null
-    private val userKey: String = "user"
+	private val model: ProfileViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val dialog = DialogUtil.networkUnavailableDialog(context)
-
         if (!NetworkUtil.isNetworkAvailable(context!!)) {
             dialog.show()
         }
 
-        val token: String = PreferencesHelper.getSharedPreferences(context!!).getString("token", "")!!
+        val token: String = PreferencesHelper.getEncrypted(context!!).getString("token", "")!!
+		if (model.getUser() == null) {
+			updateUserAsync(token)
+		} else {
+			updateUserUIAsync(model.getUser()!!, false)
+		}
 
-        if (user == null) {
-            user = if (savedInstanceState?.getParcelable<UserModel>(userKey) == null) {
-                runBlocking { getUserAsync(token) }
-            } else {
-                savedInstanceState.getParcelable(userKey)
-            }
-        }
+		binding.swipeToRefresh.setOnRefreshListener {
+			if (!NetworkUtil.isNetworkAvailable(context!!)) {
+				dialog.show()
 
-        val image: ImageView = binding.userAvatar
+				binding.swipeToRefresh.isRefreshing = false
+				return@setOnRefreshListener
+			}
 
-        if (user!!.avatar.isEmpty()) {
-            image.setImageResource(R.drawable.ic_discord_white_24dp)
-        } else {
-            Picasso.get().load(user!!.avatar).transform(CircleTransform()).into(image)
-        }
+			updateUserAsync(token)
 
-        binding.userNickname.text = user!!.nickname
-        binding.userId.text = user!!.id
+			binding.swipeToRefresh.isRefreshing = false
+		}
 
         return root
     }
@@ -63,22 +62,19 @@ class ProfileFragment : Fragment(), CoroutineScope by MainScope() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        cancel()
+        cancel() // Watch him! This small pidor maybe deliver us problems...
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        outState.putParcelable(userKey, user)
-    }
-
-    private suspend fun getUserAsync(token: String): UserModel {
-        val asyncJob = withContext(Dispatchers.IO) {
+    private fun updateUserAsync(token: String) {
+        launch(Dispatchers.IO) {
             val discordUser: User
             try {
                 discordUser = DiscordAPI(token).fetchUser()
             } catch (e: IOException) {
-                return@withContext UserModel("", "", "")
+				launch(Dispatchers.Main) {
+					Toast.makeText(context, R.string.stop_please, Toast.LENGTH_SHORT).show()
+				}
+				return@launch
             }
 
             val avatar: String = if (discordUser.avatar.isEmpty()) {
@@ -87,9 +83,26 @@ class ProfileFragment : Fragment(), CoroutineScope by MainScope() {
                 "https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=240"
             }
 
-            UserModel(discordUser.id, discordUser.fullUsername, avatar)
+			updateUserUIAsync(UserModel(discordUser.id, discordUser.fullUsername, avatar), true)
         }
-
-        return asyncJob
     }
+
+	private fun updateUserUIAsync(user: UserModel, update: Boolean) {
+		launch(Dispatchers.Main) {
+			if (update) {
+				model.setUser(user)
+			}
+
+			val image: ImageView = binding.userAvatar
+
+			if (user.avatar.isEmpty()) {
+				image.setImageResource(R.drawable.ic_discord_24dp)
+			} else {
+				Picasso.get().load(user.avatar).transform(CircleTransform()).into(image)
+			}
+
+			binding.userNickname.text = user.nickname
+			binding.userId.text = user.id
+		}
+	}
 }
