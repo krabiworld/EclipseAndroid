@@ -11,8 +11,8 @@ class DialogUtil {
     companion object {
         fun networkUnavailableDialog(context: Context?): AlertDialog {
             val dialog = MaterialAlertDialogBuilder(context!!)
-                .setTitle(R.string.networkUnavailable)
-                .setMessage(R.string.checkInternet)
+                .setTitle(R.string.network_unavailable)
+                .setMessage(R.string.check_internet)
                 .setPositiveButton(R.string.refresh, null)
                 .setCancelable(false)
                 .create()
@@ -24,7 +24,7 @@ class DialogUtil {
                         dialog.dismiss()
                         return@setOnClickListener
                     }
-                    Toast.makeText(context, R.string.networkUnavailable, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.network_unavailable, Toast.LENGTH_SHORT).show()
                 }
             }
 

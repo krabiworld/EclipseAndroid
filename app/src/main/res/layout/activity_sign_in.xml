@@ -37,7 +37,7 @@
 		/>
 
 		<Button
-			android:text="@string/signInButton"
+			android:text="@string/signIn_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:id="@+id/signInButton"
