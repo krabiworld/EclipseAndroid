@@ -10,7 +10,7 @@ import com.eclipse.bot.util.ThemeUtil
 
 class SettingsFragment : PreferenceFragmentCompat() {
 	override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-		setPreferencesFromResource(R.xml.settings, rootKey)
+		setPreferencesFromResource(R.xml.preference, rootKey)
 
 		val preferences = PreferencesHelper.get(context)
 

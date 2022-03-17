@@ -3,15 +3,20 @@ package com.eclipse.bot.util
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.eclipse.bot.data.remote.request.DiscordService
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkUtil {
     companion object {
-        // Don't remove this function yet for creating requests to future API
-        //val retrofit: Retrofit = Retrofit.Builder()
-        //    .baseUrl("https://host:port/api/")
-        //    .addConverterFactory(GsonConverterFactory.create())
-        //    .build()
+        private val discordRetrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://discord.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
+		val discordService: DiscordService = discordRetrofit.create(DiscordService::class.java)
+
+		// check internet connection, true if network available and false if unavailable
         fun isNetworkAvailable(context: Context?): Boolean {
             val connectivityManager: ConnectivityManager =
                 context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

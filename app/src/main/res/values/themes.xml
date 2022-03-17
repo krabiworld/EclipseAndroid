@@ -1,5 +1,18 @@
 <resources>
+	
 	<style name="Theme.Eclipse" parent="Theme.Material3.DayNight">
-		<item name="android:statusBarColor">@color/main</item>
+		<item name="android:statusBarColor">@color/eclipse_main</item>
+		<item name="android:navigationBarColor">@color/eclipse_main</item>
+		<item name="linearProgressIndicatorStyle">@color/eclipse_main</item>
 	</style>
+
+	<style name="Theme.Eclipse.FullScreen" parent="Theme.Material3.DayNight.NoActionBar">
+		<item name="android:statusBarColor">@color/eclipse_main</item>
+		<item name="android:navigationBarColor">@color/eclipse_main</item>
+	</style>
+
+	<style name="Theme.Eclipse.Splash" parent="Theme.Eclipse.FullScreen">
+		<item name="android:windowBackground">@drawable/splash_screen</item>
+	</style>
+
 </resources>

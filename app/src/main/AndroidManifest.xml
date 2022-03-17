@@ -16,8 +16,8 @@
 		android:theme="@style/Theme.Eclipse"
 		android:usesCleartextTraffic="true">
 
-		<activity android:name=".ui.SignInActivity" android:exported="true"/>
-		<activity android:name=".ui.ServerMangerActivity" android:exported="true"/>
+		<activity android:name=".ui.SignInActivity" android:theme="@style/Theme.Eclipse.FullScreen" android:exported="true"/>
+		<activity android:name=".ui.ServerManagerActivity" android:exported="true"/>
 		<activity android:name=".ui.AuthActivity" android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.VIEW"/>
@@ -28,10 +28,9 @@
 						<data android:host="auth" android:scheme="com.eclipse"/>
 				</intent-filter>
 		</activity>
-		<activity android:name=".ui.AboutActivity" android:exported="true"/>
-		<activity android:name=".ui.home.MainActivity" android:exported="true"/>
+		<activity android:name=".ui.home.HomeActivity" android:exported="true"/>
 		<activity android:name=".ui.settings.SettingsActivity" android:exported="true"/>
-		<activity android:name=".ui.StartActivity" android:exported="true">
+		<activity android:name=".ui.StartActivity" android:theme="@style/Theme.Eclipse.Splash" android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.MAIN"/>
 

@@ -11,26 +11,25 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.eclipse.bot.R
 import com.eclipse.bot.data.local.PreferencesHelper
-import com.eclipse.bot.databinding.ActivityMainBinding
-import com.eclipse.bot.ui.AboutActivity
+import com.eclipse.bot.databinding.ActivityHomeBinding
 import com.eclipse.bot.ui.StartActivity
 import com.eclipse.bot.ui.settings.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
+
         val appBarConfiguration = AppBarConfiguration(setOf(
-			R.id.navigation_dashboard, R.id.navigation_profile
+			R.id.navigation_dashboard, R.id.navigation_profile, R.id.navigation_about
 		))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -57,10 +56,6 @@ class MainActivity : AppCompatActivity() {
 				startActivity(Intent(this, SettingsActivity::class.java))
 				true
 			}
-            R.id.option_about -> {
-                startActivity(Intent(this, AboutActivity::class.java))
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }

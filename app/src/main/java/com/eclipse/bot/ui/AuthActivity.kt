@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.eclipse.bot.data.local.PreferencesHelper
-import com.eclipse.bot.ui.home.MainActivity
+import com.eclipse.bot.ui.home.HomeActivity
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class AuthActivity : AppCompatActivity() {
             .putString("token", accessToken)
             .apply()
 
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 }

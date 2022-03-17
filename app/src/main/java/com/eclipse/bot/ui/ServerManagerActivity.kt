@@ -7,10 +7,10 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.eclipse.bot.R
 
-class ServerMangerActivity : AppCompatActivity() {
+class ServerManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_server_manger)
+        setContentView(R.layout.activity_server_manager)
 
         val extras: Bundle = intent.extras!!
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

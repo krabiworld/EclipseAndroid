@@ -4,62 +4,60 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.eclipse.bot.R
 import com.eclipse.bot.data.local.PreferencesHelper
-import com.eclipse.bot.data.model.GuildModel
 import com.eclipse.bot.databinding.FragmentDashboardBinding
 import com.eclipse.bot.ui.home.adapter.GuildAdapter
 import com.eclipse.bot.ui.home.model.DashboardViewModel
-import com.eclipse.bot.util.DialogUtil
-import com.eclipse.bot.util.NetworkUtil
-import io.mokulu.discord.oauth.DiscordAPI
-import io.mokulu.discord.oauth.model.Guild
-import io.mokulu.discord.oauth.model.Permission
-import kotlinx.coroutines.*
-import java.io.IOException
+import com.eclipse.bot.util.SnackbarUtil
 
-class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
+class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
-	private val model: DashboardViewModel by viewModels()
+	private val dashboardViewModel: DashboardViewModel by viewModels()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
-		val dialog = DialogUtil.networkUnavailableDialog(context)
-		if (!NetworkUtil.isNetworkAvailable(context)) {
-			dialog.show()
+		binding.swipeToRefresh.isRefreshing = true
+
+		if (SnackbarUtil.checkNetworkConnection(context, activity)) {
+			binding.swipeToRefresh.isRefreshing = false
 		}
 
-		val encryptedPreferences = PreferencesHelper.getEncrypted(context)
-		val token: String = encryptedPreferences.getString("token", "")!!
 
-		val guildsList: ListView = binding.guildsList
 		val guildsAdapter = GuildAdapter(context, R.layout.guild_card, ArrayList())
-		guildsList.adapter = guildsAdapter
+		binding.guildsList.adapter = guildsAdapter
 
-		if (model.getGuilds()!!.isEmpty()) {
-			updateGuildListAsync(guildsAdapter, token)
-		} else {
-			guildsAdapter.addAll(model.getGuilds()!!)
+		if (dashboardViewModel.token.isEmpty()) {
+			dashboardViewModel.token = PreferencesHelper.getEncrypted(context).getString("token", "")!!
+		}
+
+		dashboardViewModel.getGuilds().observe(this) { guilds ->
+			if (guilds == null) {
+				SnackbarUtil.tooManyRequests(activity)
+				binding.swipeToRefresh.isRefreshing = false
+				return@observe
+			}
+			guildsAdapter.clear()
+			guildsAdapter.addAll(guilds)
 			guildsAdapter.notifyDataSetChanged()
+			binding.swipeToRefresh.isRefreshing = false
+		}
+
+		if (dashboardViewModel.getGuilds().value!!.isEmpty()) {
+			dashboardViewModel.updateGuildsAsync()
 		}
 
 		binding.swipeToRefresh.setOnRefreshListener {
-			if (!NetworkUtil.isNetworkAvailable(context!!)) {
-				dialog.show()
-
+			if (SnackbarUtil.checkNetworkConnection(context, activity)) {
 				binding.swipeToRefresh.isRefreshing = false
 				return@setOnRefreshListener
 			}
 
-			updateGuildListAsync(guildsAdapter, token)
-
-			binding.swipeToRefresh.isRefreshing = false
+			dashboardViewModel.updateGuildsAsync()
 		}
 
         return binding.root
@@ -69,34 +67,4 @@ class DashboardFragment : Fragment(), CoroutineScope by MainScope() {
         super.onDestroyView()
 		_binding = null
     }
-
-	private fun updateGuildListAsync(guildsAdapter: GuildAdapter, token: String) {
-		launch(Dispatchers.IO) {
-			val discordGuilds: List<Guild>
-
-			try {
-				discordGuilds = DiscordAPI(token).fetchGuilds()
-			} catch (e: IOException) {
-				launch(Dispatchers.Main) {
-					Toast.makeText(context, R.string.stop_please, Toast.LENGTH_SHORT).show()
-				}
-				return@launch
-			}
-
-			val guildModels: ArrayList<GuildModel> = ArrayList()
-			for (guild: Guild in discordGuilds) {
-				if (guild.permissionList.contains(Permission.ADMINISTRATOR) || guild.isOwner) {
-					val avatar = "https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=40"
-					guildModels.add(GuildModel(guild.id, guild.name, if (guild.icon == null) "" else avatar))
-				}
-			}
-
-			launch(Dispatchers.Main) {
-				model.setGuilds(guildModels)
-				guildsAdapter.clear()
-				guildsAdapter.addAll(guildModels)
-				guildsAdapter.notifyDataSetChanged()
-			}
-		}
-	}
 }

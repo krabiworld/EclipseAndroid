@@ -17,10 +17,6 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.aboutButton.setOnClickListener {
-            startActivity(Intent(this, AboutActivity::class.java))
-        }
-
         binding.signInButton.setOnClickListener {
             val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
             val customTabsIntent: CustomTabsIntent = builder.build()

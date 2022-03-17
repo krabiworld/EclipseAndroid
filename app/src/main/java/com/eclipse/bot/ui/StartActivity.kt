@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.eclipse.bot.data.local.PreferencesHelper
-import com.eclipse.bot.ui.home.MainActivity
+import com.eclipse.bot.ui.home.HomeActivity
 import com.eclipse.bot.util.ThemeUtil
 
 class StartActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class StartActivity : AppCompatActivity() {
 		}
 
 		if (preferences.getBoolean("isAuthenticated", false)) {
-			startActivity(Intent(this, MainActivity::class.java))
+			startActivity(Intent(this, HomeActivity::class.java))
 		} else {
 			startActivity(Intent(this, SignInActivity::class.java))
 		}
