@@ -45,7 +45,7 @@
 			<com.google.android.material.divider.MaterialDivider
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				app:dividerThickness="0.5dp"
+				style="@style/Theme.Eclipse.Divider"
 			/>
 
 			<LinearLayout
@@ -65,6 +65,8 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/guild_manage"
+					app:backgroundTint="@color/eclipse_main"
+					style="@style/Theme.Eclipse.Button"
 				/>
 
 			</LinearLayout>

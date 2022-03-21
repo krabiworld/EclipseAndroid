@@ -8,7 +8,7 @@
   <string name="guild_manage">Manage</string>
 	<string name="option_signOut">Sign Out</string>
   <string name="title_about">About</string>
-  <string name="avatar_description">Guild Avatar</string>
+  <string name="avatar_description">Avatar</string>
   <string name="refresh">Refresh</string>
   <string name="check_internet">Check internet connection</string>
   <string name="save_button">Save</string>
@@ -17,7 +17,11 @@
   <string name="theme_system_default">System default</string>
   <string name="theme_light">Light</string>
 	<string name="theme_dark">Dark</string>
-	<string name="too_many_requests">Too Many Requests. Stop please!</string>
 	<string name="guild_invite">Invite</string>
 	<string name="preference_display_category">Display</string>
+	<string name="user_discriminator" translatable="false">#%1$s</string>
+	<string name="app_dashboard" translatable="false"><b>Eclipse</b> Dashboard</string>
+	<string name="developed_by">Developed by Night Devs</string>
+	<string name="github" translatable="false">GitHub</string>
+	<string name="tab_general">General</string>
 </resources>

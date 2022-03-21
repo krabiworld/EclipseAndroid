@@ -30,7 +30,7 @@ gradlew assembleDebug
 ### Ссылки
 - Discord-сервер: [Night Devs](https://discord.gg/PHuvYMrvdr)
 - Поддержать: [DonationAlerts](https://www.donationalerts.com/r/electroplayer)
-- Репозиторий: [GitHub](https://github.com/Night-Devs/EcliseBot)
+- Репозиторий: [GitHub](https://github.com/Night-Devs/EclipseBot)
 - Сайт: **Coming Soon!**
 
 ### Лицензия

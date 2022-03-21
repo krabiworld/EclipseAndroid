@@ -1,17 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:gravity="center"
 	tools:context=".ui.home.AboutFragment">
 
-  <TextView
-		android:text="@string/title_about"
-		android:layout_width="wrap_content"
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/textView"
-  />
+		android:layout_marginTop="56dp"
+		android:gravity="center"
+		android:id="@+id/linearLayout"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:ignore="UseCompoundDrawables">
 
-</LinearLayout>
+		<ImageView
+			android:src="@drawable/ic_eclipse"
+			android:layout_width="58dp"
+			android:layout_height="58dp"
+			android:contentDescription="@string/app_name"
+		/>
+
+		<TextView
+			android:text="@string/app_dashboard"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?attr/textAppearanceHeadlineMedium"
+		/>
+
+	</LinearLayout>
+
+	<TextView
+		android:text="@string/developed_by"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:textAlignment="center"
+		android:textAppearance="?attr/textAppearanceTitleMedium"
+		app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+		app:layout_constraintStart_toStartOf="parent"
+	/>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent">
+
+		<com.google.android.material.divider.MaterialDivider
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/Theme.Eclipse.Divider"
+		/>
+
+		<Button
+			android:text="@string/github"
+			android:layout_width="match_parent"
+			android:layout_height="58dp"
+			android:id="@+id/button_github"
+			style="@style/Theme.Eclipse.Button.Block"
+		/>
+
+		<com.google.android.material.divider.MaterialDivider
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/Theme.Eclipse.Divider"
+		/>
+
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

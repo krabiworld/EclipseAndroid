@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/swipeToRefresh"
-	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:layout_width="match_parent"
 	tools:context=".ui.home.DashboardFragment">
 
-	<ListView
-		android:id="@+id/guilds_list"
-		android:divider="@null"
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/swipeToRefresh"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_marginTop="4dp"
-	/>
+		android:layout_height="match_parent">
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+		<ListView
+			android:id="@+id/guilds_list"
+			android:divider="@null"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="4dp"
+		/>
+
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

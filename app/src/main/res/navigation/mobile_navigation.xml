@@ -8,21 +8,21 @@
 
   <fragment
 		android:id="@+id/navigation_dashboard"
-		android:name="com.eclipse.bot.ui.home.DashboardFragment"
+		android:name="com.eclipse.dashboard.ui.home.DashboardFragment"
 		android:label="@string/title_dashboard"
 		tools:layout="@layout/fragment_dashboard"
   />
 
   <fragment
 		android:id="@+id/navigation_profile"
-		android:name="com.eclipse.bot.ui.home.ProfileFragment"
+		android:name="com.eclipse.dashboard.ui.home.ProfileFragment"
 		android:label="@string/title_profile"
 		tools:layout="@layout/fragment_profile"
   />
 
 	<fragment
 		android:id="@+id/navigation_about"
-		android:name="com.eclipse.bot.ui.home.AboutFragment"
+		android:name="com.eclipse.dashboard.ui.home.AboutFragment"
 		android:label="@string/title_about"
 		tools:layout="@layout/fragment_about"
 	/>

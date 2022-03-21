@@ -8,17 +8,18 @@
 	<string name="option_signOut">Выйти</string>
   <string name="title_about">О приложении</string>
   <string name="guild_manage">Настроить</string>
-  <string name="avatar_description">Аватар сервера</string>
+  <string name="avatar_description">Аватар</string>
   <string name="network_unavailable">Сеть недоступна</string>
   <string name="refresh">Обновить</string>
   <string name="check_internet">Проверьте подключение к интернету</string>
   <string name="save_button">Сохранить</string>
   <string name="saved">Сохранено</string>
 	<string name="theme">Тема</string>
-  <string name="theme_system_default">Выбор системы</string>
+  <string name="theme_system_default">По умолчанию</string>
   <string name="theme_light">Светлая</string>
 	<string name="theme_dark">Тёмная</string>
-  <string name="too_many_requests">Слишком много запросов. Пожалуйста остановись!</string>
-  <string name="guild_invite">Пригласить</string>
+	<string name="guild_invite">Пригласить</string>
   <string name="preference_display_category">Экран</string>
+	<string name="developed_by">Разработан Night Devs</string>
+  <string name="tab_general">Общие</string>
 </resources>

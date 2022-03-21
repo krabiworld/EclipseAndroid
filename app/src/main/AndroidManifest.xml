@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.eclipse.bot">
+	package="com.eclipse.dashboard">
 
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -16,9 +16,9 @@
 		android:theme="@style/Theme.Eclipse"
 		android:usesCleartextTraffic="true">
 
-		<activity android:name=".ui.SignInActivity" android:theme="@style/Theme.Eclipse.FullScreen" android:exported="true"/>
-		<activity android:name=".ui.ServerManagerActivity" android:exported="true"/>
-		<activity android:name=".ui.AuthActivity" android:exported="true">
+		<activity android:name="com.eclipse.dashboard.ui.SignInActivity" android:theme="@style/Theme.Eclipse.FullScreen" android:exported="true"/>
+		<activity android:name="com.eclipse.dashboard.ui.server.ServerActivity" android:exported="true"/>
+		<activity android:name="com.eclipse.dashboard.ui.AuthActivity" android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.VIEW"/>
 
@@ -28,9 +28,9 @@
 						<data android:host="auth" android:scheme="com.eclipse"/>
 				</intent-filter>
 		</activity>
-		<activity android:name=".ui.home.HomeActivity" android:exported="true"/>
-		<activity android:name=".ui.settings.SettingsActivity" android:exported="true"/>
-		<activity android:name=".ui.StartActivity" android:theme="@style/Theme.Eclipse.Splash" android:exported="true">
+		<activity android:name="com.eclipse.dashboard.ui.home.HomeActivity" android:exported="true"/>
+		<activity android:name="com.eclipse.dashboard.ui.settings.SettingsActivity" android:exported="true"/>
+		<activity android:name="com.eclipse.dashboard.ui.StartActivity" android:theme="@style/Theme.Eclipse.Splash" android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.MAIN"/>
 
