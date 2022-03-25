@@ -25,6 +25,9 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 		val root = binding.root
 
+		val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+		val customTabsIntent: CustomTabsIntent = builder.build()
+
 		if (profileViewModel.token.isEmpty()) {
 			profileViewModel.token = PreferencesHelper.getEncrypted(context).getString("token", "")!!
 		}
@@ -38,8 +41,6 @@ class ProfileFragment : Fragment() {
 					val avatar: ImageView = binding.userAvatar
 					val avatarUri = getAvatarUri("avatars", user.id, user.avatar)
 					avatar.setOnClickListener {
-						val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-						val customTabsIntent: CustomTabsIntent = builder.build()
 						customTabsIntent.launchUrl(context!!, avatarUri)
 					}
 					Glide.with(this).load(avatarUri).into(avatar)

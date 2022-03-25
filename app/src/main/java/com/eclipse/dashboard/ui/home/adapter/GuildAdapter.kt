@@ -24,7 +24,10 @@ class GuildAdapter(
 	private var states: ArrayList<Guild>
 	) : ArrayAdapter<Guild>(context!!, layout, states) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view: View? = convertView
+		val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+		val customTabsIntent: CustomTabsIntent = builder.build()
+
+		var view: View? = convertView
 
         val inflater = LayoutInflater.from(context)
         if (view == null) view = inflater.inflate(layout, parent, false)
@@ -37,8 +40,6 @@ class GuildAdapter(
 			val avatar: ImageView = view.findViewById(R.id.guild_avatar)
 			val avatarUri = getAvatarUri("icons", state.id, state.icon, 40)
 			avatar.setOnClickListener {
-				val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-				val customTabsIntent: CustomTabsIntent = builder.build()
 				customTabsIntent.launchUrl(context, getAvatarUri("icons", state.id, state.icon))
 			}
 			Glide.with(fragment).load(avatarUri).circleCrop().into(avatar)
