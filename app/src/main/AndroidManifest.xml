@@ -16,9 +16,17 @@
 		android:theme="@style/Theme.Eclipse"
 		android:usesCleartextTraffic="true">
 
-		<activity android:name="com.eclipse.dashboard.ui.SignInActivity" android:theme="@style/Theme.Eclipse.FullScreen" android:exported="true"/>
-		<activity android:name="com.eclipse.dashboard.ui.server.ServerActivity" android:exported="true"/>
-		<activity android:name="com.eclipse.dashboard.ui.AuthActivity" android:exported="true">
+		<activity
+			android:name="com.eclipse.dashboard.ui.SignInActivity"
+			android:exported="true"
+		/>
+		<activity
+			android:name="com.eclipse.dashboard.ui.server.ServerActivity"
+			android:exported="true"
+		/>
+		<activity
+			android:name="com.eclipse.dashboard.ui.AuthActivity"
+			android:exported="true">
 				<intent-filter>
 						<action android:name="android.intent.action.VIEW"/>
 
@@ -28,14 +36,19 @@
 						<data android:host="auth" android:scheme="com.eclipse"/>
 				</intent-filter>
 		</activity>
-		<activity android:name="com.eclipse.dashboard.ui.home.HomeActivity" android:exported="true"/>
-		<activity android:name="com.eclipse.dashboard.ui.settings.SettingsActivity" android:exported="true"/>
-		<activity android:name="com.eclipse.dashboard.ui.StartActivity" android:theme="@style/Theme.Eclipse.Splash" android:exported="true">
-				<intent-filter>
-						<action android:name="android.intent.action.MAIN"/>
+		<activity
+			android:name="com.eclipse.dashboard.ui.home.HomeActivity"
+			android:exported="true"
+		/>
+		<activity
+			android:name="com.eclipse.dashboard.ui.StartActivity"
+			android:theme="@style/Theme.Eclipse.Splash"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
 
-						<category android:name="android.intent.category.LAUNCHER"/>
-				</intent-filter>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
 		</activity>
 
 	</application>

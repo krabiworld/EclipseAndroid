@@ -3,7 +3,7 @@ package com.eclipse.dashboard.util
 import android.net.Uri
 
 private const val clientId: String = "920294906008834058"
-private const val redirectUri: String = "http://192.168.230.107:8080/api/auth/callback"
+private const val redirectUri: String = "http://192.168.140.107:8080/api/auth/callback"
 private const val scope: String = "identify guilds"
 private const val prompt: String = "none"
 

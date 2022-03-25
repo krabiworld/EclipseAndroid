@@ -33,18 +33,16 @@ class GuildAdapter(
 
 		view!!.findViewById<TextView>(R.id.guild_name).text = state.name
 
-		val image: ImageView = view.findViewById(R.id.guild_avatar)
-        if (state.icon == null) {
-			image.setImageResource(R.drawable.ic_discord_24dp)
-        } else {
-			val avatar = getAvatarUri("icons", state.id, state.icon, 40)
-			image.setOnClickListener {
+        if (state.icon != null) {
+			val avatar: ImageView = view.findViewById(R.id.guild_avatar)
+			val avatarUri = getAvatarUri("icons", state.id, state.icon, 40)
+			avatar.setOnClickListener {
 				val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
 				val customTabsIntent: CustomTabsIntent = builder.build()
 				customTabsIntent.launchUrl(context, getAvatarUri("icons", state.id, state.icon))
 			}
-			Glide.with(fragment).load(avatar).circleCrop().into(image)
-        }
+			Glide.with(fragment).load(avatarUri).circleCrop().into(avatar)
+		}
 
 		view.findViewById<Button>(R.id.guild_manage).setOnClickListener {
 			val intent = Intent(context, ServerActivity::class.java)

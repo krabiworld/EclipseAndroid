@@ -19,9 +19,12 @@ class ServerActivity : AppCompatActivity() {
 		binding = ActivityServerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
         val extras: Bundle = intent.extras!!
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = extras.get("guildName").toString()
+        supportActionBar?.title = extras.getString("guildName")
+        supportActionBar?.subtitle = extras.getString("guildId")
 
 		binding.viewPager2.adapter = ViewPager2Adapter(supportFragmentManager, lifecycle)
 		TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->

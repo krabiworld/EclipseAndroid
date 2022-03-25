@@ -27,7 +27,7 @@
 		/>
 
 		<TextView
-			android:text="@string/app_dashboard"
+			android:text="@string/app_full_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="?attr/textAppearanceHeadlineMedium"
@@ -50,28 +50,18 @@
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:showDividers="beginning|middle|end"
+		android:divider="?android:dividerHorizontal"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent">
 
-		<com.google.android.material.divider.MaterialDivider
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			style="@style/Theme.Eclipse.Divider"
-		/>
-
 		<Button
+			android:id="@+id/button_github"
 			android:text="@string/github"
 			android:layout_width="match_parent"
 			android:layout_height="58dp"
-			android:id="@+id/button_github"
 			style="@style/Theme.Eclipse.Button.Block"
-		/>
-
-		<com.google.android.material.divider.MaterialDivider
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			style="@style/Theme.Eclipse.Divider"
 		/>
 
 	</LinearLayout>

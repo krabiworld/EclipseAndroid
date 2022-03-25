@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Eclipse</string>
-  <string name="signIn_button">Войти</string>
+  <string name="button_signin">Войти</string>
   <string name="title_dashboard">Панель управления</string>
   <string name="title_profile">Профиль</string>
   <string name="title_settings">Настройки</string>
-	<string name="option_signOut">Выйти</string>
+	<string name="message_logout">Выйти?</string>
   <string name="title_about">О приложении</string>
   <string name="guild_manage">Настроить</string>
-  <string name="avatar_description">Аватар</string>
   <string name="network_unavailable">Сеть недоступна</string>
   <string name="refresh">Обновить</string>
   <string name="check_internet">Проверьте подключение к интернету</string>
   <string name="save_button">Сохранить</string>
   <string name="saved">Сохранено</string>
 	<string name="theme">Тема</string>
-  <string name="theme_system_default">По умолчанию</string>
+  <string name="theme_system_default">Как в системе</string>
   <string name="theme_light">Светлая</string>
 	<string name="theme_dark">Тёмная</string>
 	<string name="guild_invite">Пригласить</string>
-  <string name="preference_display_category">Экран</string>
+  <string name="preference_display_category">Дисплей</string>
 	<string name="developed_by">Разработан Night Devs</string>
   <string name="tab_general">Общие</string>
+  <string name="button_logout">Выйти</string>
+  <string name="button_cancel">Отмена</string>
+  <string name="updated">Данные пользователя обновлены!</string>
 </resources>

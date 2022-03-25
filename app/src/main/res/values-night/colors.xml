@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="eclipse_primary">#2B2A2A</color>
+  <color name="eclipse_secondary">#3A3A3A</color>
+  <color name="text_muted">#80FFFFFF</color>
+  <color name="divider">#14FFFFFF</color>
+</resources>

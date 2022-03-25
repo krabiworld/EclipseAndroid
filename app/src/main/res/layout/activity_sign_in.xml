@@ -7,7 +7,7 @@
 	android:layout_height="match_parent"
 	android:gravity="center"
 	android:orientation="vertical"
-	android:background="@color/eclipse_main"
+	android:background="@color/eclipse_primary"
 	tools:context=".ui.SignInActivity">
 
 	<ImageView
@@ -18,7 +18,7 @@
 	/>
 
 	<Button
-		android:text="@string/signIn_button"
+		android:text="@string/button_signin"
 		android:layout_marginTop="20dp"
 		android:layout_width="200dp"
 		android:layout_height="wrap_content"

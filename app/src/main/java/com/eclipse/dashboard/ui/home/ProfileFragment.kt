@@ -34,17 +34,16 @@ class ProfileFragment : Fragment() {
 
 		profileViewModel.getUser().observe(this) { user ->
 			if (user != null) {
-				val image: ImageView = binding.userAvatar
-				if (user.avatar == null) {
-					image.visibility = View.GONE
-				} else {
-					val avatar = getAvatarUri("avatars", user.id, user.avatar)
-					image.setOnClickListener {
+				if (user.avatar != null) {
+					val avatar: ImageView = binding.userAvatar
+					val avatarUri = getAvatarUri("avatars", user.id, user.avatar)
+					avatar.setOnClickListener {
 						val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
 						val customTabsIntent: CustomTabsIntent = builder.build()
-						customTabsIntent.launchUrl(context!!, avatar)
+						customTabsIntent.launchUrl(context!!, avatarUri)
 					}
-					Glide.with(this).load(avatar).into(image)
+					Glide.with(this).load(avatarUri).into(avatar)
+					avatar.visibility = View.VISIBLE
 				}
 
 				binding.userNickname.text = user.username

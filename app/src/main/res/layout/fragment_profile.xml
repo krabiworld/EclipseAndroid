@@ -5,6 +5,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".ui.home.ProfileFragment">
+
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 		android:id="@+id/swipeToRefresh"
 		android:layout_width="match_parent"
@@ -28,9 +29,10 @@
 
 					<ImageView
 						android:id="@+id/user_avatar"
+						android:visibility="gone"
 						android:layout_width="match_parent"
 						android:layout_height="194dp"
-						android:contentDescription="@string/avatar_description"
+						android:contentDescription="@string/app_name"
 						android:scaleType="centerCrop"
 					/>
 
@@ -58,7 +60,8 @@
 								android:gravity="center_vertical"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								style="@style/Profile.TitleLarge.Muted"
+								android:textAppearance="?attr/textAppearanceTitleLarge"
+								android:textColor="@color/text_muted"
 							/>
 
 						</LinearLayout>
@@ -81,4 +84,5 @@
 		</LinearLayout>
 
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
