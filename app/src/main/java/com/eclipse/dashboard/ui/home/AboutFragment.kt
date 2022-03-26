@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.eclipse.dashboard.BuildConfig
+import com.eclipse.dashboard.R
 import com.eclipse.dashboard.data.local.discordUri
 import com.eclipse.dashboard.data.local.donationAlertsUri
 import com.eclipse.dashboard.data.local.githubUri
@@ -20,6 +22,8 @@ class AboutFragment : Fragment() {
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentAboutBinding.inflate(inflater, container, false)
 
+		binding.version.text = getString(R.string.version, BuildConfig.VERSION_NAME)
+		
 		val linkList: Map<Button, Uri> = mapOf(
 			binding.buttonDiscord to discordUri,
 			binding.buttonDonationAlerts to donationAlertsUri,

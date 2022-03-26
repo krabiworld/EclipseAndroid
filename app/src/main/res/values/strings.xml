@@ -28,4 +28,5 @@
   <string name="updated">User data updated!</string>
   <string name="donationAlerts" translatable="false">DonationAlerts</string>
   <string name="discord" translatable="false">Discord</string>
+  <string name="version">Version: %1$s</string>
 </resources>
