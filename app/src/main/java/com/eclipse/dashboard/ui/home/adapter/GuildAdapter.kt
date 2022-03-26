@@ -9,13 +9,13 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.eclipse.dashboard.R
 import com.eclipse.dashboard.data.model.Guild
 import com.eclipse.dashboard.ui.server.ServerActivity
 import com.eclipse.dashboard.util.getAvatarUri
+import com.eclipse.dashboard.util.launchUri
 
 class GuildAdapter(
 	context: Context?,
@@ -24,9 +24,6 @@ class GuildAdapter(
 	private var states: ArrayList<Guild>
 	) : ArrayAdapter<Guild>(context!!, layout, states) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-		val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-		val customTabsIntent: CustomTabsIntent = builder.build()
-
 		var view: View? = convertView
 
         val inflater = LayoutInflater.from(context)
@@ -40,7 +37,7 @@ class GuildAdapter(
 			val avatar: ImageView = view.findViewById(R.id.guild_avatar)
 			val avatarUri = getAvatarUri("icons", state.id, state.icon, 40)
 			avatar.setOnClickListener {
-				customTabsIntent.launchUrl(context, getAvatarUri("icons", state.id, state.icon))
+				launchUri(context, getAvatarUri("icons", state.id, state.icon))
 			}
 			Glide.with(fragment).load(avatarUri).circleCrop().into(avatar)
 		}

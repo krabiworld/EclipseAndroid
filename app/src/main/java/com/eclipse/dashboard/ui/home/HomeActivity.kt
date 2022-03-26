@@ -42,7 +42,6 @@ class HomeActivity : AppCompatActivity() {
 
         homeViewModel.getAvatar().observe(this) { avatar ->
             if (avatar.isNotEmpty()) {
-                image.imageTintList = null
                 Glide.with(this).load(avatar).circleCrop().into(image)
             }
         }

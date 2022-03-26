@@ -26,4 +26,6 @@
   <string name="button_logout">Logout</string>
   <string name="button_cancel">Cancel</string>
   <string name="updated">User data updated!</string>
+  <string name="donationAlerts" translatable="false">DonationAlerts</string>
+  <string name="discord" translatable="false">Discord</string>
 </resources>

@@ -31,7 +31,7 @@ class HomeViewModel : ViewModel() {
                     val user = response.body()!!
 
                     val avatarUri = if (user.avatar == null) ""
-                    else getAvatarUri("avatars", user.id, user.avatar, 44).toString()
+                    else getAvatarUri("avatars", user.id, user.avatar, 40).toString()
 
                     avatar.postValue(avatarUri)
                 } else {

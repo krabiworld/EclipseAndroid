@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -15,6 +14,7 @@ import com.eclipse.dashboard.databinding.FragmentProfileBinding
 import com.eclipse.dashboard.ui.home.model.ProfileViewModel
 import com.eclipse.dashboard.util.checkNetworkConnection
 import com.eclipse.dashboard.util.getAvatarUri
+import com.eclipse.dashboard.util.launchUri
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -24,9 +24,6 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 		val root = binding.root
-
-		val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-		val customTabsIntent: CustomTabsIntent = builder.build()
 
 		if (profileViewModel.token.isEmpty()) {
 			profileViewModel.token = PreferencesHelper.getEncrypted(context).getString("token", "")!!
@@ -41,7 +38,7 @@ class ProfileFragment : Fragment() {
 					val avatar: ImageView = binding.userAvatar
 					val avatarUri = getAvatarUri("avatars", user.id, user.avatar)
 					avatar.setOnClickListener {
-						customTabsIntent.launchUrl(context!!, avatarUri)
+						launchUri(context, avatarUri)
 					}
 					Glide.with(this).load(avatarUri).into(avatar)
 					avatar.visibility = View.VISIBLE

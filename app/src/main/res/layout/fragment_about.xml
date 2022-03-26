@@ -57,10 +57,26 @@
 		app:layout_constraintBottom_toBottomOf="parent">
 
 		<Button
+			android:id="@+id/button_discord"
+			android:text="@string/discord"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/Theme.Eclipse.Button.Block"
+		/>
+
+		<Button
+			android:id="@+id/button_donationAlerts"
+			android:text="@string/donationAlerts"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/Theme.Eclipse.Button.Block"
+		/>
+
+		<Button
 			android:id="@+id/button_github"
 			android:text="@string/github"
 			android:layout_width="match_parent"
-			android:layout_height="58dp"
+			android:layout_height="wrap_content"
 			style="@style/Theme.Eclipse.Button.Block"
 		/>
 
