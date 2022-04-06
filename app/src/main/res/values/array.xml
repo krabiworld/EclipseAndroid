@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
 	<string-array name="theme_names">
 		<item>@string/theme_light</item>
 		<item>@string/theme_dark</item>
@@ -11,4 +12,15 @@
 		<item>dark</item>
 		<item>default</item>
 	</string-array>
+
+	<string-array name="lang_names">
+		<item>@string/lang_en</item>
+		<item>@string/lang_ru</item>
+	</string-array>
+
+	<string-array name="lang_values">
+		<item>en</item>
+		<item>ru</item>
+	</string-array>
+
 </resources>

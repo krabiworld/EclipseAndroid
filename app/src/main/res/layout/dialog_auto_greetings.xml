@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<include
+				android:id="@+id/app_bar"
+				layout="@layout/component_dialog_app_bar" />
+
+			<include
+				layout="@layout/component_embed"
+				app:title="@{`Message on server`}" />
+
+			<include
+				layout="@layout/component_menu"
+				android:id="@+id/channel"
+				app:hint="@{`Channel`}"/>
+
+			<include
+				layout="@layout/component_embed"
+				app:title="@{`Message in DM`}" />
+
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+</layout>

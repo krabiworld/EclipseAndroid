@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:gravity="center"
-	tools:context=".ui.home.AboutFragment">
+	android:orientation="vertical"
+	tools:context=".ui.AboutActivity">
 
 	<LinearLayout
 		android:orientation="horizontal"
@@ -15,8 +15,6 @@
 		android:layout_marginTop="56dp"
 		android:gravity="center"
 		android:id="@+id/linearLayout"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
 		tools:ignore="UseCompoundDrawables">
 
 		<ImageView
@@ -24,14 +22,13 @@
 			android:layout_width="58dp"
 			android:layout_height="58dp"
 			android:contentDescription="@string/app_name"
-		/>
+			/>
 
 		<TextView
-			android:text="@string/app_full_name"
+			android:text="@string/app_dashboard"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textAppearance="?attr/textAppearanceHeadlineMedium"
-		/>
+			android:textAppearance="?attr/textAppearanceHeadlineMedium" />
 
 	</LinearLayout>
 
@@ -42,10 +39,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
 		android:textAlignment="center"
-		android:textAppearance="?attr/textAppearanceTitleMedium"
-		app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-		app:layout_constraintStart_toStartOf="parent"
-	/>
+		android:textAppearance="?attr/textAppearanceTitleMedium" />
 
 	<TextView
 		android:id="@+id/version"
@@ -53,45 +47,48 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
 		android:textAlignment="center"
-		android:textAppearance="?attr/textAppearanceTitleMedium"
-		app:layout_constraintTop_toBottomOf="@id/developedBy"
-		app:layout_constraintStart_toStartOf="parent"
-	/>
+		android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+	<View
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
 
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:showDividers="beginning|middle|end"
-		android:divider="?android:dividerHorizontal"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent">
+		android:divider="?android:dividerHorizontal">
 
 		<Button
 			android:id="@+id/button_discord"
 			android:text="@string/discord"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			style="@style/Theme.Eclipse.Button.Block"
-		/>
+			style="@style/Theme.Eclipse.Button.Block" />
 
 		<Button
-			android:id="@+id/button_donationAlerts"
+			android:id="@+id/button_donation_alerts"
 			android:text="@string/donationAlerts"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			style="@style/Theme.Eclipse.Button.Block"
-		/>
+			style="@style/Theme.Eclipse.Button.Block" />
 
 		<Button
 			android:id="@+id/button_github"
 			android:text="@string/github"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			style="@style/Theme.Eclipse.Button.Block"
-		/>
+			style="@style/Theme.Eclipse.Button.Block" />
+
+		<Button
+			android:id="@+id/button_oss_licenses"
+			android:text="@string/oss_licenses"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/Theme.Eclipse.Button.Block" />
 
 	</LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

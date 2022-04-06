@@ -9,13 +9,13 @@ import com.eclipse.dashboard.util.changeTheme
 import com.eclipse.dashboard.util.currentTheme
 
 class StartActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
 		val preferences = PreferencesHelper.get(this)
 
 		val theme: String = preferences.getString("theme", "default")!!
-		if (currentTheme(this).value != theme) {
+		if (currentTheme(this, preferences).value != theme) {
 			changeTheme(theme)
 		}
 

@@ -1,6 +1,14 @@
 <resources>
 	
-	<style name="Theme.Eclipse" parent="Theme.Material3.DayNight.NoActionBar">
+	<style name="Theme.Eclipse" parent="Theme.Material3.DayNight">
+		<item name="android:statusBarColor">@color/eclipse_primary</item>
+		<item name="android:navigationBarColor">@color/eclipse_primary</item>
+		<item name="actionBarStyle">@style/Theme.Eclipse.ActionBar</item>
+		<item name="buttonStyle">@style/Theme.Eclipse.Button</item>
+		<item name="dialogCornerRadius">28dp</item>
+	</style>
+
+	<style name="Theme.Eclipse.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
 		<item name="android:statusBarColor">@color/eclipse_primary</item>
 		<item name="android:navigationBarColor">@color/eclipse_primary</item>
 		<item name="toolbarStyle">@style/Theme.Eclipse.Toolbar</item>
@@ -8,18 +16,25 @@
 		<item name="bottomNavigationStyle">@style/Theme.Eclipse.BottomNavigationView</item>
 	</style>
 
-	<style name="Theme.Eclipse.Splash" parent="Theme.Eclipse">
+	<style name="Theme.Eclipse.Splash" parent="Theme.Eclipse.NoActionBar">
 		<item name="android:windowBackground">@drawable/splash_screen</item>
 	</style>
 
+	<style name="Theme.Eclipse.ActionBar" parent="Widget.Material3.ActionBar.Solid">
+		<item name="background">@color/eclipse_primary</item>
+		<item name="homeAsUpIndicator">@drawable/ic_arrow_back_white_24dp</item>
+		<item name="titleTextStyle">@style/Theme.Eclipse.ActionBar.TitleTextStyle</item>
+	</style>
+
+	<style name="Theme.Eclipse.ActionBar.TitleTextStyle" parent="@style/TextAppearance.Material3.ActionBar.Title">
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+	
 	<style name="Theme.Eclipse.Toolbar" parent="Widget.Material3.Toolbar">
 		<item name="android:background">@color/eclipse_primary</item>
-		<item name="titleCentered">true</item>
-		<item name="subtitleCentered">true</item>
-		<item name="titleTextColor">#fff</item>
-		<item name="subtitleTextColor">#fff</item>
-		<item name="subtitleTextAppearance">?textAppearanceTitleSmall</item>
-		<item name="navigationIconTint">#fff</item>
+		<item name="navigationIcon">@drawable/ic_close_black_24dp</item>
+		<item name="navigationIconTint">@android:color/white</item>
+		<item name="titleTextColor">@android:color/white</item>
 	</style>
 
 	<style name="Theme.Eclipse.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -36,8 +51,12 @@
 		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance</item>
 	</style>
 
+	<style name="Theme.Eclipse.TextButton" parent="Widget.Material3.Button.TextButton">
+		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance</item>
+	</style>
+
 	<style name="Theme.Eclipse.Button.Block" parent="Widget.Material3.Button.TextButton">
-		<item name="android:height">58dp</item>
+		<item name="android:height">56dp</item>
 		<item name="android:insetTop">0dp</item>
 		<item name="android:insetBottom">0dp</item>
 		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance.Block</item>

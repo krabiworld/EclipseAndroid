@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="button_signin">Войти</string>
-  <string name="title_dashboard">Панель управления</string>
+  <string name="button_sign_in">Войти</string>
+  <string name="title_servers">Сервера</string>
   <string name="title_profile">Профиль</string>
   <string name="title_settings">Настройки</string>
-	<string name="message_logout">Выйти?</string>
+	<string name="message_logout">Вы хотите выйти из аккаунта?</string>
   <string name="title_about">О приложении</string>
   <string name="guild_manage">Настроить</string>
-  <string name="network_unavailable">Сеть недоступна</string>
+  <string name="message_no_connection">Нет подключения</string>
   <string name="refresh">Обновить</string>
-  <string name="check_internet">Проверьте подключение к интернету</string>
-  <string name="save_button">Сохранить</string>
+	<string name="save_button">Сохранить</string>
   <string name="saved">Сохранено</string>
 	<string name="theme">Тема</string>
   <string name="theme_system_default">Как в системе</string>
@@ -20,8 +19,21 @@
   <string name="preference_display_category">Дисплей</string>
 	<string name="developed_by">Разработан Night Devs</string>
   <string name="tab_general">Общие</string>
-  <string name="button_logout">Выйти</string>
+  <string name="button_ok">ОК</string>
   <string name="button_cancel">Отмена</string>
-  <string name="updated">Данные пользователя обновлены!</string>
+  <string name="message_updated">Данные обновлены!</string>
   <string name="version">Версия: %1$s</string>
+  <string name="oss_licenses">Лицензии открытого ПО</string>
+	<string name="button_sign_out">Выйти</string>
+	<string name="message_server_list_is_empty">Список серверов пуст!</string>
+	<string name="tab_private_rooms">Приватные комнаты</string>
+	<string name="tab_audit">Аудит</string>
+	<string name="tab_leaders">Лидеры</string>
+	<string name="tab_auto_moderation">Авто-модерация</string>
+	<string name="tab_custom_commands">Кастомные команды</string>
+	<string name="title_docs">Документация</string>
+	<string name="title_auto_greetings">Автоматические приветствия</string>
+	<string name="language">Язык</string>
+	<string name="lang_ru">Русский</string>
+	<string name="lang_en">Английский</string>
 </resources>

@@ -1,24 +1,27 @@
 package com.eclipse.dashboard.ui.home
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
-import com.eclipse.dashboard.R
 import com.eclipse.dashboard.data.local.PreferencesHelper
+import com.eclipse.dashboard.data.local.Token
 import com.eclipse.dashboard.databinding.ActivityHomeBinding
-import com.eclipse.dashboard.ui.StartActivity
-import com.eclipse.dashboard.ui.home.model.HomeViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.eclipse.dashboard.ui.home.viewmodel.HomeViewModel
+import com.eclipse.dashboard.ui.settings.SettingsFragment
+import com.eclipse.dashboard.util.changeLocale
+import com.eclipse.dashboard.util.getUserAvatar
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private val homeViewModel: HomeViewModel by viewModels()
+
+	override fun attachBaseContext(newBase: Context?) {
+		super.attachBaseContext(changeLocale(newBase!!))
+	}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,53 +29,42 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+		Token = PreferencesHelper.getEncrypted(this).getString("token", "")!!
+		val homeViewModel: HomeViewModel by viewModels()
+
         val image = binding.userAvatar
         val toolbar = binding.toolbar
         val navView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         val appBarConfiguration = AppBarConfiguration(navView.menu)
         toolbar.setupWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // if token is empty, get and write token to variable
-        if (homeViewModel.token.isEmpty()) {
-            homeViewModel.token = PreferencesHelper.getEncrypted(this).getString("token", "")!!
-        }
+		homeViewModel.getUser().observe(this) { user ->
+			if (homeViewModel.isTokenCorrupted) {
+				PreferencesHelper.signOut(this, this)
+			}
+			if (user?.avatar != null) {
+				val avatar = getUserAvatar(user.id, user.avatar)
+				Glide.with(this).load(avatar).circleCrop().into(image)
+			}
+		}
 
-        homeViewModel.getAvatar().observe(this) { avatar ->
-            if (avatar.isNotEmpty()) {
-                Glide.with(this).load(avatar).circleCrop().into(image)
-            }
-        }
+		val dialog = HomeDialogFragment()
 
-        // on click - show logout dialog
-        image.setOnClickListener {
-            logoutDialog().show()
-        }
-
-        // on long click - update avatar
-        image.setOnLongClickListener {
-            homeViewModel.updateAvatarAsync()
-            Toast.makeText(this, R.string.updated, Toast.LENGTH_SHORT).show()
-            true
+		// on click - show main dialog
+		image.setOnClickListener {
+			if (dialog.isAdded) return@setOnClickListener
+			dialog.show(supportFragmentManager, HomeDialogFragment.TAG)
         }
     }
 
-    private fun logoutDialog(): MaterialAlertDialogBuilder {
-        return MaterialAlertDialogBuilder(this)
-            .setMessage(getString(R.string.message_logout))
-            .setNegativeButton(getString(R.string.button_cancel)) { dialog, _ ->
-                dialog.cancel()
-            }
-            .setPositiveButton(getString(R.string.button_logout)) { _, _ ->
-                val preferences = PreferencesHelper.get(this)
-                val encryptedPreferences = PreferencesHelper.getEncrypted(this)
-                preferences.edit().putBoolean("isAuthenticated", false).apply()
-                encryptedPreferences.edit().putString("token", "").apply()
-
-                startActivity(Intent(this, StartActivity::class.java))
-                finish()
-            }
-    }
+	override fun onResume() {
+		super.onResume()
+		if (SettingsFragment.languageIsChanged) {
+			SettingsFragment.languageIsChanged = false
+			recreate()
+		}
+	}
 }

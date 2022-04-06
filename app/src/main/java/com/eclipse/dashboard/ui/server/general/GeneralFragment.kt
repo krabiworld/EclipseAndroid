@@ -1,4 +1,4 @@
-package com.eclipse.dashboard.ui.server
+package com.eclipse.dashboard.ui.server.general
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,17 @@ class GeneralFragment : Fragment() {
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentGeneralBinding.inflate(inflater, container, false)
+
+		val autoGreetingsDialog = AutoGreetingsBottomSheet()
+
+		binding.autoGreetings.button.setOnClickListener {
+			if (autoGreetingsDialog.isAdded) return@setOnClickListener
+			autoGreetingsDialog.show(requireActivity().supportFragmentManager, AutoGreetingsBottomSheet.TAG)
+		}
+		binding.autoGreetings.switcher.setOnCheckedChangeListener { _, checked ->
+			binding.autoGreetings.button.isEnabled = checked
+		}
+
 		return binding.root
 	}
 

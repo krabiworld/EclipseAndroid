@@ -1,10 +1,10 @@
 package com.eclipse.dashboard.util
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import com.eclipse.dashboard.data.enums.Theme
-import com.eclipse.dashboard.data.local.PreferencesHelper
 
 // if variable theme not equal "light" or "dark" will be theme set to follow system
 fun changeTheme(theme: String) {
@@ -17,14 +17,14 @@ fun changeTheme(theme: String) {
 	AppCompatDelegate.setDefaultNightMode(mode)
 }
 
-fun currentTheme(context: Context?): Theme {
+fun currentTheme(context: Context, preferences: SharedPreferences): Theme {
 	// if in preferences theme == default returns system default theme
-	if (PreferencesHelper.get(context).getString("theme", "default") == "default") {
+	if (preferences.getString("theme", "default") == "default") {
 		return Theme.DEFAULT
 	}
 
 	// because here no ui mode "follow system" or "system default"
-	return when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+	return when (context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
 		Configuration.UI_MODE_NIGHT_NO -> Theme.LIGHT
 		Configuration.UI_MODE_NIGHT_YES -> Theme.DARK
 		else -> Theme.DEFAULT

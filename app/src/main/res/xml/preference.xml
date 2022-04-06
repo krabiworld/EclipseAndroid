@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<PreferenceCategory app:title="@string/preference_display_category">
+	<PreferenceCategory
+		app:title="@string/preference_display_category"
+		app:iconSpaceReserved="false">
+
 		<ListPreference
 			app:key="theme"
+			app:iconSpaceReserved="false"
 			app:title="@string/theme"
 			app:entries="@array/theme_names"
 			app:entryValues="@array/theme_values"
-			app:dialogTitle="@string/theme"
-		/>
+			app:dialogTitle="@string/theme" />
+
+		<ListPreference
+			app:key="lang"
+			app:iconSpaceReserved="false"
+			app:title="@string/language"
+			app:entries="@array/lang_names"
+			app:entryValues="@array/lang_values"
+			app:dialogTitle="@string/language" />
+
 	</PreferenceCategory>
 
 </PreferenceScreen>
