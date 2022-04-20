@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eclipse.dashboard.R
-import com.eclipse.dashboard.databinding.DialogAutoGreetingsBinding
+import com.eclipse.dashboard.databinding.BottomSheetAutoGreetingsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class AutoGreetingsBottomSheet : BottomSheetDialogFragment() {
-	private var _binding: DialogAutoGreetingsBinding? = null
+	private var _binding: BottomSheetAutoGreetingsBinding? = null
 	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		_binding = DialogAutoGreetingsBinding.inflate(inflater, container, false)
+		_binding = BottomSheetAutoGreetingsBinding.inflate(inflater, container, false)
 
 		isCancelable = false
 
@@ -35,6 +35,6 @@ class AutoGreetingsBottomSheet : BottomSheetDialogFragment() {
 	}
 
 	companion object {
-		const val TAG = "AutoGreetingsDialogFragment"
+		const val TAG = "AutoGreetingsBottomSheet"
 	}
 }

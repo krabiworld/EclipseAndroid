@@ -8,7 +8,9 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.eclipse.dashboard.BuildConfig
 import com.eclipse.dashboard.R
-import com.eclipse.dashboard.data.local.Uris
+import com.eclipse.dashboard.data.local.URI_DISCORD
+import com.eclipse.dashboard.data.local.URI_DONATIONALERTS
+import com.eclipse.dashboard.data.local.URI_GITHUB
 import com.eclipse.dashboard.databinding.ActivityAboutBinding
 import com.eclipse.dashboard.util.changeLocale
 import com.eclipse.dashboard.util.launchUri
@@ -36,9 +38,9 @@ class AboutActivity : AppCompatActivity() {
 		val ossLicenses = Intent(this, OssLicensesMenuActivity::class.java)
 
 		val buttonsMap: Map<Button, () -> Unit> = mapOf(
-			binding.buttonDiscord to { launchUri(context = this, uriString = Uris.DISCORD) },
-			binding.buttonDonationAlerts to { launchUri(context = this, uriString = Uris.DONATIONALERTS) },
-			binding.buttonGithub to { launchUri(context = this, uriString = Uris.GITHUB) },
+			binding.buttonDiscord to { launchUri(context = this, uriString = URI_DISCORD) },
+			binding.buttonDonationAlerts to { launchUri(context = this, uriString = URI_DONATIONALERTS) },
+			binding.buttonGithub to { launchUri(context = this, uriString = URI_GITHUB) },
 			binding.buttonOssLicenses to { startActivity(ossLicenses) }
 		)
 

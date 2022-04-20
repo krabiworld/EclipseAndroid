@@ -22,6 +22,6 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/signInButton"
 		android:backgroundTint="@color/eclipse_secondary"
-		style="@style/Theme.Eclipse.Button" />
+		style="@style/Button" />
 
 </LinearLayout>

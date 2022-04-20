@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="eclipse_main">#7762D2</color>
+	<color name="eclipse_purple">#7762D2</color>
+	<color name="eclipse_gray">#2B2A2A</color>
   <color name="eclipse_primary">#7762D2</color>
   <color name="eclipse_secondary">#5D4CA2</color>
   <color name="text_muted">#B5B5B5</color>

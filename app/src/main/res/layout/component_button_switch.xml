@@ -27,7 +27,7 @@
 			android:paddingStart="24dp"
 			android:paddingEnd="0dp"
 			android:gravity="start|center_vertical"
-			style="@style/Theme.Eclipse.Button.Block" />
+			style="@style/BlockButton" />
 
 		<com.google.android.material.switchmaterial.SwitchMaterial
 			android:id="@+id/switcher"

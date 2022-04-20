@@ -8,6 +8,6 @@
 		android:id="@+id/toolbar"
 		android:layout_width="match_parent"
 		android:layout_height="?attr/actionBarSize"
-		style="@style/Theme.Eclipse.Toolbar" />
+		style="@style/Toolbar" />
 
 </com.google.android.material.appbar.AppBarLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:background="@drawable/background"
+	tools:context=".ui.home.ServersFragment">
+
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/swipe_to_refresh"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<TextView
+				android:id="@+id/message_list_empty"
+				android:text="@string/message_server_list_is_empty"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+				android:textColor="@android:color/white"
+				android:gravity="center" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/server_list"
+				android:visibility="gone"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

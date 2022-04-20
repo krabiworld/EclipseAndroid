@@ -30,31 +30,34 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 		Token = PreferencesHelper.getEncrypted(this).getString("token", "")!!
-		val homeViewModel: HomeViewModel by viewModels()
 
-        val image = binding.userAvatar
+		val homeViewModel: HomeViewModel by viewModels()
+		val dialog = HomeDialogFragment()
+		val avatar = binding.userAvatar
         val toolbar = binding.toolbar
         val navView = binding.navView
         val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
-
         val appBarConfiguration = AppBarConfiguration(navView.menu)
+
         toolbar.setupWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
 		homeViewModel.getUser().observe(this) { user ->
-			if (homeViewModel.isTokenCorrupted) {
+			if (homeViewModel.tokenIsCorrupted) {
 				PreferencesHelper.signOut(this, this)
 			}
-			if (user?.avatar != null) {
-				val avatar = getUserAvatar(user.id, user.avatar)
-				Glide.with(this).load(avatar).circleCrop().into(image)
-			}
+
+			if (user?.avatar == null) return@observe
+
+			// load avatar
+			Glide.with(this)
+				.load(getUserAvatar(user.id, user.avatar))
+				.circleCrop()
+				.into(avatar)
 		}
 
-		val dialog = HomeDialogFragment()
-
 		// on click - show main dialog
-		image.setOnClickListener {
+		avatar.setOnClickListener {
 			if (dialog.isAdded) return@setOnClickListener
 			dialog.show(supportFragmentManager, HomeDialogFragment.TAG)
         }

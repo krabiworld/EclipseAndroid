@@ -24,7 +24,7 @@ class DocsFragment : Fragment() {
 				builtInZoomControls = true
 				displayZoomControls = false
 			}
-			loadUrl("https://eclipsefrontend.herokuapp.com")
+			loadUrl("https://docs.juniper.bot/") // Surprise
 		}
 
 		return binding.root

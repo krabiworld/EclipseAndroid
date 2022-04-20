@@ -1,77 +1,77 @@
 <resources>
 	
-	<style name="Theme.Eclipse" parent="Theme.Material3.DayNight">
+	<style name="Primary" parent="Theme.Material3.DayNight">
 		<item name="android:statusBarColor">@color/eclipse_primary</item>
 		<item name="android:navigationBarColor">@color/eclipse_primary</item>
-		<item name="actionBarStyle">@style/Theme.Eclipse.ActionBar</item>
-		<item name="buttonStyle">@style/Theme.Eclipse.Button</item>
+		<item name="actionBarStyle">@style/ActionBar</item>
+		<item name="buttonStyle">@style/Button</item>
 		<item name="dialogCornerRadius">28dp</item>
 	</style>
 
-	<style name="Theme.Eclipse.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+	<style name="Secondary" parent="Theme.Material3.DayNight.NoActionBar">
 		<item name="android:statusBarColor">@color/eclipse_primary</item>
-		<item name="android:navigationBarColor">@color/eclipse_primary</item>
-		<item name="toolbarStyle">@style/Theme.Eclipse.Toolbar</item>
-		<item name="buttonStyle">@style/Theme.Eclipse.Button</item>
-		<item name="bottomNavigationStyle">@style/Theme.Eclipse.BottomNavigationView</item>
+		<item name="android:navigationBarColor">@color/eclipse_gray</item>
+		<item name="toolbarStyle">@style/Toolbar</item>
+		<item name="buttonStyle">@style/Button</item>
+		<item name="bottomNavigationStyle">@style/BottomNavigation</item>
 	</style>
 
-	<style name="Theme.Eclipse.Splash" parent="Theme.Eclipse.NoActionBar">
+	<style name="Splash" parent="Secondary">
 		<item name="android:windowBackground">@drawable/splash_screen</item>
 	</style>
 
-	<style name="Theme.Eclipse.ActionBar" parent="Widget.Material3.ActionBar.Solid">
+	<style name="ActionBar" parent="Widget.Material3.ActionBar.Solid">
 		<item name="background">@color/eclipse_primary</item>
 		<item name="homeAsUpIndicator">@drawable/ic_arrow_back_white_24dp</item>
-		<item name="titleTextStyle">@style/Theme.Eclipse.ActionBar.TitleTextStyle</item>
+		<item name="titleTextStyle">@style/ActionBar.TitleTextStyle</item>
 	</style>
 
-	<style name="Theme.Eclipse.ActionBar.TitleTextStyle" parent="@style/TextAppearance.Material3.ActionBar.Title">
+	<style name="ActionBar.TitleTextStyle" parent="@style/TextAppearance.Material3.ActionBar.Title">
 		<item name="android:textColor">@android:color/white</item>
 	</style>
 	
-	<style name="Theme.Eclipse.Toolbar" parent="Widget.Material3.Toolbar">
+	<style name="Toolbar" parent="Widget.Material3.Toolbar">
 		<item name="android:background">@color/eclipse_primary</item>
 		<item name="navigationIcon">@drawable/ic_close_black_24dp</item>
 		<item name="navigationIconTint">@android:color/white</item>
 		<item name="titleTextColor">@android:color/white</item>
 	</style>
 
-	<style name="Theme.Eclipse.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
-		<item name="android:background">@color/eclipse_primary</item>
+	<style name="BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+		<item name="android:background">@color/eclipse_gray</item>
 		<item name="itemTextColor">#fff</item>
 		<item name="itemIconTint">#fff</item>
-		<item name="itemActiveIndicatorStyle">@style/Theme.Eclipse.Indicator</item>
+		<item name="itemActiveIndicatorStyle">@style/BottomNavigation.Indicator</item>
 		<item name="labelVisibilityMode">selected</item>
 	</style>
 
-	<style name="Theme.Eclipse.Button" parent="Widget.Material3.Button">
+	<style name="Button" parent="Widget.Material3.Button">
 		<item name="android:backgroundTint">@color/eclipse_primary</item>
 		<item name="android:textColor">#fff</item>
-		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance</item>
+		<item name="shapeAppearanceOverlay">@style/ShapeAppearance</item>
 	</style>
 
-	<style name="Theme.Eclipse.TextButton" parent="Widget.Material3.Button.TextButton">
-		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance</item>
+	<style name="TextButton" parent="Widget.Material3.Button.TextButton">
+		<item name="shapeAppearanceOverlay">@style/ShapeAppearance</item>
 	</style>
 
-	<style name="Theme.Eclipse.Button.Block" parent="Widget.Material3.Button.TextButton">
+	<style name="BlockButton" parent="Widget.Material3.Button.TextButton">
 		<item name="android:height">56dp</item>
 		<item name="android:insetTop">0dp</item>
 		<item name="android:insetBottom">0dp</item>
-		<item name="shapeAppearanceOverlay">@style/Theme.Eclipse.ShapeAppearance.Block</item>
+		<item name="shapeAppearanceOverlay">@style/BlockShapeAppearance</item>
 	</style>
 
-	<style name="Theme.Eclipse.ShapeAppearance">
+	<style name="ShapeAppearance">
 		<item name="cornerFamily">rounded</item>
 		<item name="cornerSize">5dp</item>
 	</style>
 
-	<style name="Theme.Eclipse.ShapeAppearance.Block">
+	<style name="BlockShapeAppearance">
 		<item name="cornerSize">0dp</item>
 	</style>
 
-	<style name="Theme.Eclipse.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+	<style name="BottomNavigation.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
 		<item name="android:color">@color/eclipse_secondary</item>
 	</style>
 

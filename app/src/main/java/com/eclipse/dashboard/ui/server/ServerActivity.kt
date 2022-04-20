@@ -55,7 +55,7 @@ class ServerActivity : AppCompatActivity() {
             true
         }
         R.id.action_saveButton -> {
-			Snackbar.make(findViewById(android.R.id.content), R.string.saved, Snackbar.LENGTH_SHORT).show()
+			Snackbar.make(findViewById(android.R.id.content), R.string.message_saved, Snackbar.LENGTH_SHORT).show()
             true
         }
         else -> super.onOptionsItemSelected(item)

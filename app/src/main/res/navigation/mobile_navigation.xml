@@ -2,17 +2,20 @@
 <navigation
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/mobile_navigation"
-	app:startDestination="@+id/navigation_dashboard">
+	app:startDestination="@+id/navigation_servers">
 
   <fragment
-		android:id="@+id/navigation_dashboard"
-		android:name="com.eclipse.dashboard.ui.home.DashboardFragment"
-		android:label="@string/title_servers" />
+		android:id="@+id/navigation_servers"
+		android:name="com.eclipse.dashboard.ui.home.ServersFragment"
+		android:label="@string/title_servers"
+		tools:layout="@layout/fragment_servers" />
 
 	<fragment
 		android:id="@+id/navigation_docs"
 		android:name="com.eclipse.dashboard.ui.home.DocsFragment"
-		android:label="@string/title_docs" />
+		android:label="@string/title_docs"
+		tools:layout="@layout/fragment_docs" />
 
 </navigation>

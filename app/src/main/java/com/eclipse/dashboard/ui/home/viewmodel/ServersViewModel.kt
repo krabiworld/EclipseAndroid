@@ -4,19 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.eclipse.dashboard.data.local.Token
 import com.eclipse.dashboard.data.model.Guild
 import com.eclipse.dashboard.data.remote.discordAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class DashboardViewModel : ViewModel() {
-	private val guilds: MutableLiveData<ArrayList<Guild>?> by lazy {
-		MutableLiveData<ArrayList<Guild>?>().also {
-			updateGuildsAsync()
-		}
+class ServersViewModel : ViewModel() {
+	init {
+	    updateGuildsAsync()
 	}
+
+	private val guilds = MutableLiveData<ArrayList<Guild>?>()
 
 	fun getGuilds(): LiveData<ArrayList<Guild>?> {
 		return guilds
@@ -27,7 +26,7 @@ class DashboardViewModel : ViewModel() {
 			val discordGuilds: ArrayList<Guild>
 
 			try {
-				val response = discordAPI.fetchGuilds("Bearer $Token").execute()
+				val response = discordAPI.fetchGuilds().execute()
 				if (response.isSuccessful) {
 					discordGuilds = response.body()!!
 				} else {

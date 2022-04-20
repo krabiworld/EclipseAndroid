@@ -34,4 +34,4 @@ gradlew assembleDebug
 - Сайт: **Coming Soon!**
 
 ### Лицензия
-[BSD 3-Clause](LICENSE)
+[GNU GPLv3](LICENSE)
