@@ -1,6 +1,7 @@
 package com.eclipse.dashboard.ui.home
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -30,7 +31,11 @@ class HomeDialogFragment : DialogFragment() {
 	override fun onStart() {
 		super.onStart()
 		requireDialog().window?.apply {
-			setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+			if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+				setLayout(800, ViewGroup.LayoutParams.WRAP_CONTENT)
+			} else {
+				setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+			}
 			setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 		}
 	}

@@ -44,6 +44,16 @@
 
 		<include
 			layout="@layout/component_text_field"
+			android:id="@+id/imageUrl"
+			app:hint="@{`Image URL`}" />
+
+		<include
+			layout="@layout/component_text_field"
+			android:id="@+id/thumbnailUrl"
+			app:hint="@{`Thumbnail URL`}" />
+
+		<include
+			layout="@layout/component_text_field"
 			android:id="@+id/title"
 			app:hint="@{`Title`}" />
 

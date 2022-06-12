@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eclipse.dashboard.R
 import com.eclipse.dashboard.databinding.ActivityServerBinding
 import com.eclipse.dashboard.ui.server.adapter.ViewPager2Adapter
-import com.eclipse.dashboard.util.changeLocale
+import com.eclipse.dashboard.util.changeLanguage
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -16,7 +16,7 @@ class ServerActivity : AppCompatActivity() {
 	private lateinit var binding: ActivityServerBinding
 
 	override fun attachBaseContext(newBase: Context?) {
-		super.attachBaseContext(changeLocale(newBase!!))
+		super.attachBaseContext(changeLanguage(newBase!!))
 	}
 
     override fun onCreate(savedInstanceState: Bundle?) {

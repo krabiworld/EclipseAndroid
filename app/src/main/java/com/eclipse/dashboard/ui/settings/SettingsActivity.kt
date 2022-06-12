@@ -6,13 +6,13 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.eclipse.dashboard.R
 import com.eclipse.dashboard.databinding.ActivitySettingsBinding
-import com.eclipse.dashboard.util.changeLocale
+import com.eclipse.dashboard.util.changeLanguage
 
 class SettingsActivity : AppCompatActivity() {
 	private lateinit var binding: ActivitySettingsBinding
 
 	override fun attachBaseContext(newBase: Context?) {
-		super.attachBaseContext(changeLocale(newBase!!))
+		super.attachBaseContext(changeLanguage(newBase!!))
 	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {

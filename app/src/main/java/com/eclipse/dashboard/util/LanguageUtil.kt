@@ -7,7 +7,7 @@ import com.eclipse.dashboard.data.enums.Language
 import com.eclipse.dashboard.data.local.PreferencesHelper
 import java.util.*
 
-fun changeLocale(context: Context): Context {
+fun changeLanguage(context: Context): Context {
 	val lang = PreferencesHelper.get(context).getString("lang", "en")!!
 	val locale = Locale(lang)
 	Locale.setDefault(locale)

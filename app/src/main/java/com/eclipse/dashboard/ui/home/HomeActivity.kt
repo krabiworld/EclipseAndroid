@@ -13,14 +13,14 @@ import com.eclipse.dashboard.data.local.Token
 import com.eclipse.dashboard.databinding.ActivityHomeBinding
 import com.eclipse.dashboard.ui.home.viewmodel.HomeViewModel
 import com.eclipse.dashboard.ui.settings.SettingsFragment
-import com.eclipse.dashboard.util.changeLocale
+import com.eclipse.dashboard.util.changeLanguage
 import com.eclipse.dashboard.util.getUserAvatar
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
 	override fun attachBaseContext(newBase: Context?) {
-		super.attachBaseContext(changeLocale(newBase!!))
+		super.attachBaseContext(changeLanguage(newBase!!))
 	}
 
     override fun onCreate(savedInstanceState: Bundle?) {

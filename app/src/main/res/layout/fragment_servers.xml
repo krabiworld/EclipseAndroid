@@ -28,6 +28,8 @@
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/server_list"
 				android:visibility="gone"
+				android:padding="6dp"
+				android:clipToPadding="false"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent" />
 

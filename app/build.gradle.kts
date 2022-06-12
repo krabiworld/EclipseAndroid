@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
 	id("kotlin-android")
-	id("com.google.gms.google-services")
-	id("com.google.firebase.crashlytics")
 	id("com.google.android.gms.oss-licenses-plugin")
 }
 
@@ -26,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -42,9 +40,6 @@ android {
 }
 
 dependencies {
-	implementation(platform("com.google.firebase:firebase-bom:29.2.0"))
-	implementation("com.google.firebase:firebase-crashlytics-ktx:18.2.9")
-	implementation("com.google.firebase:firebase-analytics-ktx:20.1.2")
 	implementation("androidx.preference:preference-ktx:1.2.0")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt")
 	implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -52,13 +47,13 @@ dependencies {
 	implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 	implementation("androidx.security:security-crypto-ktx:1.1.0-alpha03")
 	implementation("androidx.browser:browser:1.4.0")
-	implementation("androidx.core:core-ktx:1.7.0")
+	implementation("androidx.core:core-ktx:1.8.0")
 	implementation("com.google.android.gms:play-services-oss-licenses:17.0.0")
-	implementation("androidx.appcompat:appcompat:1.4.1")
-	implementation("com.google.android.material:material:1.5.0")
-	implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-	implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
-	implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
+	implementation("androidx.appcompat:appcompat:1.4.2")
+	implementation("com.google.android.material:material:1.6.1")
+	implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+	implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
+	implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 	implementation("com.github.bumptech.glide:glide:4.13.1")
 	annotationProcessor("com.github.bumptech.glide:compiler:4.13.1")

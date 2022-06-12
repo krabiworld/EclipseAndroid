@@ -12,7 +12,7 @@ import com.eclipse.dashboard.data.local.URI_DISCORD
 import com.eclipse.dashboard.data.local.URI_DONATIONALERTS
 import com.eclipse.dashboard.data.local.URI_GITHUB
 import com.eclipse.dashboard.databinding.ActivityAboutBinding
-import com.eclipse.dashboard.util.changeLocale
+import com.eclipse.dashboard.util.changeLanguage
 import com.eclipse.dashboard.util.launchUri
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
@@ -20,7 +20,7 @@ class AboutActivity : AppCompatActivity() {
 	private lateinit var binding: ActivityAboutBinding
 
 	override fun attachBaseContext(newBase: Context?) {
-		super.attachBaseContext(changeLocale(newBase!!))
+		super.attachBaseContext(changeLanguage(newBase!!))
 	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {

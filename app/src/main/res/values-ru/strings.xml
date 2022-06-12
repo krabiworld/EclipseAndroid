@@ -41,14 +41,9 @@
 	<string name="lang_en">Английский</string>
 	<string name="lang_ru">Русский</string>
 
-	<!-- Preference Category Data collection -->
-	<string name="analytics">Аналитика</string>
-	<string name="crash_reports">Отчёт об ошибках</string> <!-- TODO: Check translate -->
-
 	<!-- Preference -->
 	<string name="title_settings">Настройки</string>
 	<string name="preference_category_display">Дисплей</string>
-	<string name="preference_category_data_collection">Сбор данных</string>
 
 	<!-- Tabs -->
 	<string name="tab_general">Общие</string>

@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val discordAPI: DiscordAPI by lazy {
 	Retrofit.Builder()
-		.baseUrl("https://discord.com/api/")
+		.baseUrl("https://discord.com/api/v9/")
 		.addConverterFactory(GsonConverterFactory.create())
 		.build()
 		.create(DiscordAPI::class.java)

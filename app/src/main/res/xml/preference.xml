@@ -23,20 +23,4 @@
 
 	</PreferenceCategory>
 
-	<PreferenceCategory
-		app:title="@string/preference_category_data_collection"
-		app:iconSpaceReserved="false">
-
-		<SwitchPreference
-			app:key="analytics"
-			app:iconSpaceReserved="false"
-			app:title="@string/analytics" />
-
-		<SwitchPreference
-			app:key="crashlytics"
-			app:iconSpaceReserved="false"
-			app:title="@string/crash_reports" />
-
-	</PreferenceCategory>
-
 </PreferenceScreen>
