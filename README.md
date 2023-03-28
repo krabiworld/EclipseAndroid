@@ -25,7 +25,7 @@ gradlew assembleDebug
 [Lokilife#3331](https://github.com/Lokilife) - Разработчик бота, разработчик сайта, со-владелец проекта<br>
 [Kusay#7444](https://github.com/Kasefuchs) - Разработчик сайта<br>
 [Lookins#4727](https://github.com/Lookins01) - Тестировщик, баг хантер<br>
-[Headcrab#1566](https://github.com/HeadcrabJ) - Разработчик Android приложения<br>
+[dajeo#1566](https://github.com/dajeo) - Разработчик Android приложения<br>
 
 ### Ссылки
 - Discord-сервер: [Night Devs](https://discord.gg/PHuvYMrvdr)
